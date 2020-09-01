@@ -33,7 +33,7 @@ export default class MTableEditRow extends React.Component {
     const mapArr = this.props.columns
       .filter(
         (columnDef) =>
-          !columnDef.hidden && !(columnDef.tableData.groupOrder > -1)
+            !columnDef.hidden && !((columnDef.tableData.groupOrder > -1 && !this.props.options.showGroupedColumnsWhileGrouped))
       )
       .sort((a, b) => a.tableData.columnOrder - b.tableData.columnOrder)
       .map((columnDef, index) => {
@@ -267,7 +267,7 @@ export default class MTableEditRow extends React.Component {
     } else {
       const colSpan = this.props.columns.filter(
         (columnDef) =>
-          !columnDef.hidden && !(columnDef.tableData.groupOrder > -1)
+            !columnDef.hidden && !((columnDef.tableData.groupOrder > -1 && !this.props.options.showGroupedColumnsWhileGrouped))
       ).length;
       columns = [
         <TableCell

@@ -206,7 +206,7 @@ class MTableFilterRow extends React.Component {
     const columns = this.props.columns
       .filter(
         (columnDef) =>
-          !columnDef.hidden && !(columnDef.tableData.groupOrder > -1)
+            !columnDef.hidden && !((columnDef.tableData.groupOrder > -1 && !this.props.options.showGroupedColumnsWhileGrouped))
       )
       .sort((a, b) => a.tableData.columnOrder - b.tableData.columnOrder)
       .map((columnDef) => (
@@ -285,6 +285,7 @@ class MTableFilterRow extends React.Component {
 }
 
 MTableFilterRow.defaultProps = {
+  options: {},
   columns: [],
   detailPanelColumnAlignment: "left",
   selection: false,

@@ -240,6 +240,7 @@ export const defaultProps = {
     detailPanelColumnAlignment: "left",
     thirdSortClick: true,
     overflowY: "auto",
+    showGroupedColumnsWhileGrouped: false,
   },
   localization: {
     error: "Data could not be retrieved",
