@@ -623,6 +623,7 @@ class App extends Component {
                   getGroupTitle: (groupData) => {
                     return `Grouped by ${groupData.value}`;
                   },
+                  getExportValue: () => "T",
                   // lookup: {
                   //   1: "1",
                   //   2: "2",
@@ -644,6 +645,8 @@ class App extends Component {
               options={{
                 filtering: true,
                 grouping: true,
+                exportButton: true,
+                exportAllData: true,
                 groupTitle: (group) => group.data.length,
                 searchFieldVariant: "outlined",
                 showGroupedColumnsWhileGrouped: true,
