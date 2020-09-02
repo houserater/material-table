@@ -190,6 +190,12 @@ export interface Column<RowData extends object> {
   hideFilterIcon?: boolean;
   initialEditValue?: any;
   lookup?: object;
+  getGroupTitle?: (
+      groupData: any
+  ) => any;
+  getExportValue?: (
+      rowData: RowData
+  ) => any;
   editPlaceholder?: string;
   editable?:
     | "always"

@@ -49,7 +49,12 @@ export class MTableToolbar extends React.Component {
       ? this.props.data
       : this.props.renderData
     ).map((rowData) =>
-      columns.map((columnDef) => this.props.getFieldValue(rowData, columnDef))
+        columns.map((columnDef) => {
+          if (typeof columnDef.getExportValue === "function") {
+            return columnDef.getExportValue(rowData);
+          }
+          return this.props.getFieldValue(rowData, columnDef);
+        })
     );
 
     return [columns, data];
