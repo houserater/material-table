@@ -315,6 +315,8 @@ export const propTypes = {
       PropTypes.shape({ csv: PropTypes.bool, pdf: PropTypes.bool }),
     ]),
     exportDelimiter: PropTypes.string,
+    exportGroupsFlattened: PropTypes.bool,
+    exportIncludeGroup: PropTypes.bool,
     exportFileName: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     exportCsv: PropTypes.func,
     filtering: PropTypes.bool,

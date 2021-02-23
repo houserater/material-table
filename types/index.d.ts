@@ -314,6 +314,8 @@ export interface Options<RowData extends object> {
   exportAllData?: boolean;
   exportButton?: boolean | { csv?: boolean; pdf?: boolean };
   exportDelimiter?: string;
+  exportIncludeGroup?: boolean;
+  exportGroupsFlattened?: boolean;
   exportFileName?:
     | string
     | ((columns: Column<RowData>, data: string[][]) => string);

@@ -928,6 +928,8 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         exportAllData: props.options.exportAllData,
         exportButton: props.options.exportButton,
         exportDelimiter: props.options.exportDelimiter,
+        exportGroupsFlattened: props.options.exportGroupsFlattened,
+        exportIncludeGroup: props.options.exportIncludeGroup,
         exportFileName: props.options.exportFileName,
         exportCsv: props.options.exportCsv,
         exportPdf: props.options.exportPdf,

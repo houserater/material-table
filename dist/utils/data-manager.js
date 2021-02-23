@@ -317,7 +317,7 @@ var DataManager = /*#__PURE__*/function () {
     key: "setColumns",
     value: function setColumns(columns) {
       var undefinedWidthColumns = columns.filter(function (c) {
-        return c.width === undefined && !c.hidden;
+        return c.width === undefined && c.columnDef ? c.columnDef.tableData.width === undefined : true && !c.hidden;
       });
       var usedWidth = ["0px"];
       this.columns = columns.map(function (columnDef, index) {

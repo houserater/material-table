@@ -142,6 +142,8 @@ var propTypes = {
       pdf: _propTypes["default"].bool
     })]),
     exportDelimiter: _propTypes["default"].string,
+    exportGroupsFlattened: _propTypes["default"].bool,
+    exportIncludeGroup: _propTypes["default"].bool,
     exportFileName: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].func]),
     exportCsv: _propTypes["default"].func,
     filtering: _propTypes["default"].bool,

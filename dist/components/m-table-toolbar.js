@@ -13,6 +13,8 @@ var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/obje
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
@@ -86,14 +88,45 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
       }, _this.props.onSearchChanged(searchText));
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getTableData", function () {
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          isForExport = _ref.isForExport;
+
       var columns = _this.props.columns.filter(function (columnDef) {
         return (!columnDef.hidden || columnDef["export"] === true) && columnDef["export"] !== false && (columnDef.field || columnDef.getExportValue);
       }).sort(function (a, b) {
         return a.tableData.columnOrder > b.tableData.columnOrder ? 1 : -1;
       });
 
-      var data = (_this.props.exportAllData ? _this.props.data : _this.props.renderData).map(function (rowData) {
-        return columns.map(function (columnDef) {
+      var mappableData = _this.props.exportAllData ? _this.props.data : _this.props.renderData;
+
+      if (isForExport && _this.props.exportGroupsFlattened) {
+        var recursiveFlatten = function recursiveFlatten(rowData) {
+          var children = rowData.groups && Array.isArray(rowData.groups) && rowData.groups.length > 0 ? rowData.groups : rowData.data;
+          if (!Array.isArray(children)) return rowData;
+          return [_this.props.exportIncludeGroup && {
+            getGroupValue: function getGroupValue() {
+              return rowData.value;
+            }
+          }, children.map(function (rowData) {
+            return recursiveFlatten(rowData);
+          }).flat()].filter(function (value) {
+            return !!value;
+          }).flat();
+        };
+
+        mappableData = mappableData.reduce(function (allData, rowData) {
+          return [].concat((0, _toConsumableArray2["default"])(allData), [recursiveFlatten(rowData)]).filter(function (value) {
+            return !!value;
+          }).flat();
+        }, []);
+      }
+
+      var data = mappableData.map(function (rowData) {
+        return columns.map(function (columnDef, index) {
+          if (index === 0 && typeof rowData.getGroupValue === "function") {
+            return rowData.getGroupValue();
+          }
+
           if (typeof columnDef.getExportValue === "function") {
             return columnDef.getExportValue(rowData);
           }
@@ -104,7 +137,9 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
       return [columns, data];
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "defaultExportCsv", function () {
-      var _this$getTableData = _this.getTableData(),
+      var _this$getTableData = _this.getTableData({
+        isForExport: true
+      }),
           _this$getTableData2 = (0, _slicedToArray2["default"])(_this$getTableData, 2),
           columns = _this$getTableData2[0],
           data = _this$getTableData2[1];
@@ -122,7 +157,9 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "defaultExportPdf", function () {
       if (jsPDF !== null) {
-        var _this$getTableData3 = _this.getTableData(),
+        var _this$getTableData3 = _this.getTableData({
+          isForExport: true
+        }),
             _this$getTableData4 = (0, _slicedToArray2["default"])(_this$getTableData3, 2),
             columns = _this$getTableData4[0],
             data = _this$getTableData4[1];
@@ -413,6 +450,8 @@ MTableToolbar.propTypes = {
     pdf: _propTypes["default"].bool
   })]),
   exportDelimiter: _propTypes["default"].string,
+  exportIncludeGroup: _propTypes["default"].bool,
+  exportGroupsFlattened: _propTypes["default"].bool,
   exportFileName: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].func]),
   exportCsv: _propTypes["default"].func,
   exportPdf: _propTypes["default"].func,
