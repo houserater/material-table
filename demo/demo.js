@@ -620,6 +620,9 @@ class App extends Component {
                     const isGroup = rowType === "group";
                     return <>{isGroup ? rowData : rowData.id}</>;
                   },
+                  getGroupValue: (value) => {
+                    return value + 1
+                  },
                   getGroupTitle: (groupData) => {
                     return `Grouped by ${groupData.value}`;
                   },

@@ -64,6 +64,7 @@ export const propTypes = {
       initialEditValue: PropTypes.any,
       lookup: PropTypes.object,
       getGroupTitle: PropTypes.func,
+      getGroupValue: PropTypes.func,
       getExportValue: PropTypes.func,
       editable: PropTypes.oneOfType([
         PropTypes.func,

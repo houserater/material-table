@@ -56,6 +56,7 @@ var propTypes = {
     initialEditValue: _propTypes["default"].any,
     lookup: _propTypes["default"].object,
     getGroupTitle: _propTypes["default"].func,
+    getGroupValue: _propTypes["default"].func,
     getExportValue: _propTypes["default"].func,
     editable: _propTypes["default"].oneOfType([_propTypes["default"].func, _propTypes["default"].oneOf(["always", "onUpdate", "onAdd", "never"])]),
     removable: _propTypes["default"].bool,

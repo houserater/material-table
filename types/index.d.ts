@@ -193,6 +193,9 @@ export interface Column<RowData extends object> {
   getGroupTitle?: (
       groupData: any
   ) => any;
+  getGroupValue?: (
+      arg0: any
+  ) => any;
   getExportValue?: (
       rowData: RowData
   ) => any;

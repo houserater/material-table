@@ -766,7 +766,14 @@ var DataManager = /*#__PURE__*/function () {
         var object = result;
         object = groups.reduce(function (o, colDef) {
           var value = currentRow[colDef.field] || (0, _2.byString)(currentRow, colDef.field);
+
+          if (colDef.getGroupValue) {
+            value = colDef.getGroupValue(value);
+          }
+
           var group;
+          console.log(o.groupsIndex);
+          console.log(value);
 
           if (o.groupsIndex[value] !== undefined) {
             group = o.groups[o.groupsIndex[value]];
