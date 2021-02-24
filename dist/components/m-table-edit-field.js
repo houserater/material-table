@@ -172,10 +172,10 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
         InputProps: {
           style: {
             fontSize: 13
+          },
+          inputProps: {
+            "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
           }
-        },
-        inputProps: {
-          "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
         }
       })));
     }
@@ -193,10 +193,10 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
         InputProps: {
           style: {
             fontSize: 13
+          },
+          inputProps: {
+            "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
           }
-        },
-        inputProps: {
-          "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
         }
       })));
     }
@@ -219,10 +219,10 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
         InputProps: {
           style: {
             fontSize: 13
+          },
+          inputProps: {
+            "aria-label": this.props.columnDef.title
           }
-        },
-        inputProps: {
-          "aria-label": this.props.columnDef.title
         }
       }));
     }
@@ -247,14 +247,12 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
 
           return _this4.props.onChange(value);
         },
-        InputProps: {
+        inputProps: {
           style: {
             fontSize: 13,
-            textAlign: "right"
+            textAlign: "right",
+            "aria-label": this.props.columnDef.title
           }
-        },
-        inputProps: {
-          "aria-label": this.props.columnDef.title
         },
         onKeyDown: this.props.onKeyDown,
         autoFocus: this.props.autoFocus

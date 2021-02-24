@@ -49,8 +49,6 @@ var _core = require("@material-ui/core");
 
 var CommonValues = _interopRequireWildcard(require("../utils/common-values"));
 
-var _fastDeepEqual = _interopRequireDefault(require("fast-deep-equal"));
-
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
@@ -110,10 +108,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
       resizingColumnDef: undefined
     };
     return _this;
-  } // shouldComponentUpdate(nextProps, nextState){
-  //   return !equal(nextProps, this.props) || !equal(nextState, this.state);
-  // }
-
+  }
 
   (0, _createClass2["default"])(MTableHeader, [{
     key: "componentDidMount",
@@ -184,7 +179,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
             }
           }, content), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement(_this2.props.icons.Resize, {
             style: {
-              cursor: "col-resize",
+              cursor: "e-resize",
               color: _this2.state.resizingColumnDef && _this2.state.resizingColumnDef.tableData.id === columnDef.tableData.id ? _this2.props.theme.palette.primary.main : "inherit"
             },
             onMouseDown: function onMouseDown(e) {
@@ -259,6 +254,10 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
+      // const log = this.props.columns.map(c => c.field + ": " + c.tableData.width + ", " + c.tableData.initialWidth + ", " + c.tableData.additionalWidth).join('\r\n');
+      // console.log("===============================");
+      // console.log(log);
+      // console.log("===============================");
       var headers = this.renderHeader();
 
       if (this.props.hasSelection) {

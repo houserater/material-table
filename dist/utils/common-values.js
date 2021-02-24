@@ -38,14 +38,22 @@ var selectionMaxWidth = function selectionMaxWidth(props, maxTreeLevel) {
 exports.selectionMaxWidth = selectionMaxWidth;
 
 var reducePercentsInCalc = function reducePercentsInCalc(calc, fullValue) {
-  var captureGroups = calc.match(/(\d*)%/);
+  var index = calc.indexOf("%");
 
-  if (captureGroups && captureGroups.length > 1) {
-    var percentage = captureGroups[1];
-    return calc.replace(/\d*%/, "".concat(fullValue * (percentage / 100), "px"));
+  while (index !== -1) {
+    var leftIndex = index - 1;
+
+    while (leftIndex >= 0 && "0123456789.".indexOf(calc[leftIndex]) !== -1) {
+      leftIndex--;
+    }
+
+    leftIndex++;
+    var value = Number.parseFloat(calc.substring(leftIndex, index));
+    calc = calc.substring(0, leftIndex) + value * fullValue / 100 + "px" + calc.substring(index + 1);
+    index = calc.indexOf("%");
   }
 
-  return calc.replace(/\d*%/, "".concat(fullValue, "px"));
+  return calc;
 };
 
 exports.reducePercentsInCalc = reducePercentsInCalc;
