@@ -190,6 +190,15 @@ export interface Column<RowData extends object> {
   hideFilterIcon?: boolean;
   initialEditValue?: any;
   lookup?: object;
+  getGroupTitle?: (
+      groupData: any
+  ) => any;
+  getGroupValue?: (
+      arg0: any
+  ) => any;
+  getExportValue?: (
+      rowData: RowData
+  ) => any;
   editPlaceholder?: string;
   editable?:
     | "always"
@@ -308,6 +317,8 @@ export interface Options<RowData extends object> {
   exportAllData?: boolean;
   exportButton?: boolean | { csv?: boolean; pdf?: boolean };
   exportDelimiter?: string;
+  exportIncludeGroup?: boolean;
+  exportGroupsFlattened?: boolean;
   exportFileName?:
     | string
     | ((columns: Column<RowData>, data: string[][]) => string);

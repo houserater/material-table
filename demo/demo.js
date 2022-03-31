@@ -594,7 +594,7 @@ class App extends Component {
             >
               Select
             </button>
-            {/* <MaterialTable
+            <MaterialTable
               title={
                 <Typography variant="h6" color="primary">
                   Remote Data Preview
@@ -616,20 +616,17 @@ class App extends Component {
                   field: "id",
                   filterOnItemSelect: true,
                   filterPlaceholder: "placeholder",
-                  lookup: {
-                    1: "1",
-                    2: "2",
-                    3: "3",
-                    4: "4",
-                    5: "5",
-                    6: "6",
-                    7: "7",
-                    8: "8",
-                    9: "9",
-                    10: "10",
-                    11: "11",
-                    12: "12",
+                  render: (rowData, rowType) => {
+                    const isGroup = rowType === "group";
+                    return <>{isGroup ? rowData : rowData.id}</>;
                   },
+                  getGroupValue: (value) => {
+                    return value + 1
+                  },
+                  getGroupTitle: (groupData) => {
+                    return `Grouped by ${groupData.value}`;
+                  },
+                  getExportValue: () => "T",
                 },
                 { title: "First Name", field: "first_name" },
                 { title: "Last Name", field: "last_name" },
@@ -637,8 +634,13 @@ class App extends Component {
               options={{
                 filtering: true,
                 grouping: true,
+                exportButton: true,
+                exportAllData: true,
+                exportGroupsFlattened: true,
+                exportIncludeGroup: true,
                 groupTitle: (group) => group.data.length,
                 searchFieldVariant: "outlined",
+                showGroupedColumnsWhileGrouped: true,
               }}
               localization={{
                 toolbar: {
@@ -662,7 +664,7 @@ class App extends Component {
                     });
                 })
               }
-            /> */}
+            />
           </div>
         </MuiThemeProvider>
       </>

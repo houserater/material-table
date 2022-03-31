@@ -113,7 +113,9 @@ export default class MTableGroupRow extends React.Component {
     }
 
     let value = this.props.groupData.value;
-    if (column.lookup) {
+    if (column.getGroupTitle) {
+      value = column.getGroupTitle(this.props.groupData);
+    } else if (column.lookup) {
       value = column.lookup[value];
     }
 

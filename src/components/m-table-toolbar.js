@@ -34,29 +34,59 @@ export class MTableToolbar extends React.Component {
     this.setState({ searchText }, this.props.onSearchChanged(searchText));
   };
 
-  getTableData = () => {
+  getTableData = ({ isForExport } = {}) => {
     const columns = this.props.columns
       .filter(
         (columnDef) =>
           (!columnDef.hidden || columnDef.export === true) &&
           columnDef.export !== false &&
-          columnDef.field
+            (columnDef.field || columnDef.getExportValue)
       )
       .sort((a, b) =>
         a.tableData.columnOrder > b.tableData.columnOrder ? 1 : -1
       );
-    const data = (this.props.exportAllData
-      ? this.props.data
-      : this.props.renderData
-    ).map((rowData) =>
-      columns.map((columnDef) => this.props.getFieldValue(rowData, columnDef))
-    );
+    let mappableData = this.props.exportAllData
+        ? this.props.data
+        : this.props.renderData;
+
+    if (isForExport && this.props.exportGroupsFlattened) {
+      let recursiveFlatten = (rowData) => {
+        let children = rowData.groups &&
+        Array.isArray(rowData.groups) &&
+        rowData.groups.length > 0 ?
+            rowData.groups :
+            rowData.data;
+
+        if (!Array.isArray(children)) return rowData;
+
+         return [
+           this.props.exportIncludeGroup && { getGroupValue: () => rowData.value },
+           children.map((rowData) => recursiveFlatten(rowData)).flat()
+         ].filter((value) => !!value).flat();
+      };
+
+      mappableData = mappableData.reduce((allData, rowData) => {
+          return [...allData, recursiveFlatten(rowData)].filter((value) => !!value).flat();
+      }, []);
+    }
+
+    const data = (mappableData).map((rowData) => {
+      return columns.map((columnDef, index) => {
+        if (index === 0 && (typeof rowData.getGroupValue === "function")) {
+          return rowData.getGroupValue();
+        }
+        if (typeof columnDef.getExportValue === "function") {
+          return columnDef.getExportValue(rowData);
+        }
+        return this.props.getFieldValue(rowData, columnDef);
+      });
+    });
 
     return [columns, data];
   };
 
   defaultExportCsv = () => {
-    const [columns, data] = this.getTableData();
+    const [columns, data] = this.getTableData({ isForExport: true });
 
     let fileName = this.props.title || "data";
     if (this.props.exportFileName) {
@@ -76,7 +106,7 @@ export class MTableToolbar extends React.Component {
 
   defaultExportPdf = () => {
     if (jsPDF !== null) {
-      const [columns, data] = this.getTableData();
+      const [columns, data] = this.getTableData({ isForExport: true });
 
       let content = {
         startY: 50,
@@ -430,6 +460,8 @@ MTableToolbar.propTypes = {
     PropTypes.shape({ csv: PropTypes.bool, pdf: PropTypes.bool }),
   ]),
   exportDelimiter: PropTypes.string,
+  exportIncludeGroup: PropTypes.bool,
+  exportGroupsFlattened: PropTypes.bool,
   exportFileName: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   exportCsv: PropTypes.func,
   exportPdf: PropTypes.func,

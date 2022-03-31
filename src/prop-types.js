@@ -63,6 +63,9 @@ export const propTypes = {
       hideFilterIcon: PropTypes.bool,
       initialEditValue: PropTypes.any,
       lookup: PropTypes.object,
+      getGroupTitle: PropTypes.func,
+      getGroupValue: PropTypes.func,
+      getExportValue: PropTypes.func,
       editable: PropTypes.oneOfType([
         PropTypes.func,
         PropTypes.oneOf(["always", "onUpdate", "onAdd", "never"]),
@@ -313,6 +316,8 @@ export const propTypes = {
       PropTypes.shape({ csv: PropTypes.bool, pdf: PropTypes.bool }),
     ]),
     exportDelimiter: PropTypes.string,
+    exportGroupsFlattened: PropTypes.bool,
+    exportIncludeGroup: PropTypes.bool,
     exportFileName: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     exportCsv: PropTypes.func,
     filtering: PropTypes.bool,

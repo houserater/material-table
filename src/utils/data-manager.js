@@ -60,10 +60,8 @@ export default class DataManager {
   }
 
   setColumns(columns) {
-    const undefinedWidthColumns = columns.filter((c) =>
-      c.width === undefined && c.columnDef
-        ? c.columnDef.tableData.width === undefined
-        : true && !c.hidden
+    const undefinedWidthColumns = columns.filter(
+      (c) => c.width === undefined && !c.hidden
     );
     let usedWidth = ["0px"];
 
@@ -791,10 +789,16 @@ export default class DataManager {
       (result, currentRow) => {
         let object = result;
         object = groups.reduce((o, colDef) => {
-          const value =
+          let value =
             currentRow[colDef.field] || byString(currentRow, colDef.field);
 
+          if (colDef.getGroupValue) {
+            value = colDef.getGroupValue(value);
+          }
+
           let group;
+          console.log(o.groupsIndex)
+          console.log(value)
           if (o.groupsIndex[value] !== undefined) {
             group = o.groups[o.groupsIndex[value]];
           }
