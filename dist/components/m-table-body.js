@@ -1,80 +1,55 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
+var _typeof = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _TableBody = _interopRequireDefault(require("@material-ui/core/TableBody"));
-
 var _TableCell = _interopRequireDefault(require("@material-ui/core/TableCell"));
-
 var _TableRow = _interopRequireDefault(require("@material-ui/core/TableRow"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var React = _interopRequireWildcard(require("react"));
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /* eslint-disable no-unused-vars */
 /* eslint-enable no-unused-vars */
 var MTableBody = /*#__PURE__*/function (_React$Component) {
-  (0, _inherits2["default"])(MTableBody, _React$Component);
-
-  var _super = _createSuper(MTableBody);
-
   function MTableBody() {
     (0, _classCallCheck2["default"])(this, MTableBody);
-    return _super.apply(this, arguments);
+    return _callSuper(this, MTableBody, arguments);
   }
-
-  (0, _createClass2["default"])(MTableBody, [{
+  (0, _inherits2["default"])(MTableBody, _React$Component);
+  return (0, _createClass2["default"])(MTableBody, [{
     key: "renderEmpty",
     value: function renderEmpty(emptyRowCount, renderData) {
       var rowHeight = this.props.options.padding === "default" ? 49 : 36;
       var localization = (0, _objectSpread2["default"])({}, MTableBody.defaultProps.localization, this.props.localization);
-
       if (this.props.options.showEmptyDataSourceMessage && renderData.length === 0) {
         var addColumn = 0;
-
         if (this.props.options.selection) {
           addColumn++;
         }
-
         if (this.props.actions && this.props.actions.filter(function (a) {
           return a.position === "row" || typeof a === "function";
         }).length > 0) {
           addColumn++;
         }
-
         if (this.props.hasDetailPanel) {
           addColumn++;
         }
-
         if (this.props.isTreeData) {
           addColumn++;
         }
-
         return /*#__PURE__*/React.createElement(_TableRow["default"], {
           style: {
             height: rowHeight * (this.props.options.paging && this.props.options.emptyRowsWhenPaging ? this.props.pageSize : 1)
@@ -111,7 +86,6 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
     key: "renderUngroupedRows",
     value: function renderUngroupedRows(renderData) {
       var _this = this;
-
       return renderData.map(function (data, index) {
         if (data.tableData.editing || _this.props.bulkEditOpen) {
           return /*#__PURE__*/React.createElement(_this.props.components.EditRow, {
@@ -175,7 +149,6 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
     key: "renderGroupedRows",
     value: function renderGroupedRows(groups, renderData) {
       var _this2 = this;
-
       return renderData.map(function (groupData, index) {
         return /*#__PURE__*/React.createElement(_this2.props.components.GroupRow, {
           actions: _this2.props.actions,
@@ -220,11 +193,9 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
         return col1.tableData.groupOrder - col2.tableData.groupOrder;
       });
       var emptyRowCount = 0;
-
       if (this.props.options.paging) {
         emptyRowCount = this.props.pageSize - renderData.length;
       }
-
       return /*#__PURE__*/React.createElement(_TableBody["default"], null, this.props.options.filtering && /*#__PURE__*/React.createElement(this.props.components.FilterRow, {
         options: this.props.options,
         columns: this.props.columns.filter(function (columnDef) {
@@ -290,9 +261,7 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
       }), this.renderEmpty(emptyRowCount, renderData));
     }
   }]);
-  return MTableBody;
 }(React.Component);
-
 MTableBody.defaultProps = {
   actions: [],
   currentPage: 0,
@@ -340,5 +309,4 @@ MTableBody.propTypes = {
   bulkEditOpen: _propTypes["default"].bool,
   onBulkEditRowChanged: _propTypes["default"].func
 };
-var _default = MTableBody;
-exports["default"] = _default;
+var _default = exports["default"] = MTableBody;

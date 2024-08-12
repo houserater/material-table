@@ -1,34 +1,23 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
+var _typeof = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.defaultProps = void 0;
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _react = _interopRequireDefault(require("react"));
-
 var _CircularProgress = _interopRequireDefault(require("@material-ui/core/CircularProgress"));
-
 var _Icon = _interopRequireDefault(require("@material-ui/core/Icon"));
-
 var _Paper = _interopRequireDefault(require("@material-ui/core/Paper"));
-
 var _TablePagination = _interopRequireDefault(require("@material-ui/core/TablePagination"));
-
 var MComponents = _interopRequireWildcard(require("./components"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _colorManipulator = require("@material-ui/core/styles/colorManipulator");
-
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 var OverlayLoading = function OverlayLoading(props) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     style: {
@@ -47,11 +36,9 @@ var OverlayLoading = function OverlayLoading(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement(_CircularProgress["default"], null)));
 };
-
 OverlayLoading.propTypes = {
   theme: _propTypes["default"].any
 };
-
 var OverlayError = function OverlayError(props) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     style: {
@@ -77,21 +64,18 @@ var OverlayError = function OverlayError(props) {
     }
   })));
 };
-
 OverlayError.propTypes = {
   error: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string]),
   retry: _propTypes["default"].func,
   theme: _propTypes["default"].any,
   icon: _propTypes["default"].any
 };
-
 var Container = function Container(props) {
   return /*#__PURE__*/_react["default"].createElement(_Paper["default"], (0, _extends2["default"])({
     elevation: 2
   }, props));
 };
-
-var defaultProps = {
+var defaultProps = exports.defaultProps = {
   actions: [],
   classes: {},
   columns: [],
@@ -216,7 +200,6 @@ var defaultProps = {
       }), "replay");
     })
     /* eslint-enable react/display-name */
-
   },
   isLoading: false,
   title: "Table Title",
@@ -295,4 +278,3 @@ var defaultProps = {
   },
   style: {}
 };
-exports.defaultProps = defaultProps;

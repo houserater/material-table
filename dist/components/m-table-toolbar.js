@@ -1,106 +1,65 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
+var _typeof = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.styles = exports.MTableToolbar = void 0;
-
+exports.styles = exports["default"] = exports.MTableToolbar = void 0;
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var _Checkbox = _interopRequireDefault(require("@material-ui/core/Checkbox"));
-
 var _FormControlLabel = _interopRequireDefault(require("@material-ui/core/FormControlLabel"));
-
 var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
-
 var _InputAdornment = _interopRequireDefault(require("@material-ui/core/InputAdornment"));
-
 var _Menu = _interopRequireDefault(require("@material-ui/core/Menu"));
-
 var _MenuItem = _interopRequireDefault(require("@material-ui/core/MenuItem"));
-
 var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
-
 var _Toolbar = _interopRequireDefault(require("@material-ui/core/Toolbar"));
-
 var _Tooltip = _interopRequireDefault(require("@material-ui/core/Tooltip"));
-
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
-
 var _withStyles = _interopRequireDefault(require("@material-ui/core/styles/withStyles"));
-
 var _colorManipulator = require("@material-ui/core/styles/colorManipulator");
-
 var _classnames = _interopRequireDefault(require("classnames"));
-
 var _filefy = require("filefy");
-
 var _propTypes = _interopRequireWildcard(require("prop-types"));
-
 require("jspdf-autotable");
-
 var React = _interopRequireWildcard(require("react"));
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /* eslint-disable no-unused-vars */
 var jsPDF = typeof window !== "undefined" ? require("jspdf").jsPDF : null;
 /* eslint-enable no-unused-vars */
-
-var MTableToolbar = /*#__PURE__*/function (_React$Component) {
-  (0, _inherits2["default"])(MTableToolbar, _React$Component);
-
-  var _super = _createSuper(MTableToolbar);
-
+var MTableToolbar = exports.MTableToolbar = /*#__PURE__*/function (_React$Component) {
   function MTableToolbar(props) {
     var _this;
-
     (0, _classCallCheck2["default"])(this, MTableToolbar);
-    _this = _super.call(this, props);
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onSearchChange", function (searchText) {
+    _this = _callSuper(this, MTableToolbar, [props]);
+    (0, _defineProperty2["default"])(_this, "onSearchChange", function (searchText) {
       _this.props.dataManager.changeSearchText(searchText);
-
       _this.setState({
         searchText: searchText
       }, _this.props.onSearchChanged(searchText));
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getTableData", function () {
+    (0, _defineProperty2["default"])(_this, "getTableData", function () {
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          isForExport = _ref.isForExport;
-
+        isForExport = _ref.isForExport;
       var columns = _this.props.columns.filter(function (columnDef) {
         return (!columnDef.hidden || columnDef["export"] === true) && columnDef["export"] !== false && (columnDef.field || columnDef.getExportValue);
       }).sort(function (a, b) {
         return a.tableData.columnOrder > b.tableData.columnOrder ? 1 : -1;
       });
-
       var mappableData = _this.props.exportAllData ? _this.props.data : _this.props.renderData;
-
       if (isForExport && _this.props.exportGroupsFlattened) {
-        var recursiveFlatten = function recursiveFlatten(rowData) {
+        var _recursiveFlatten = function recursiveFlatten(rowData) {
           var children = rowData.groups && Array.isArray(rowData.groups) && rowData.groups.length > 0 ? rowData.groups : rowData.data;
           if (!Array.isArray(children)) return rowData;
           return [_this.props.exportIncludeGroup && {
@@ -108,62 +67,54 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
               return rowData.value;
             }
           }, children.map(function (rowData) {
-            return recursiveFlatten(rowData);
+            return _recursiveFlatten(rowData);
           }).flat()].filter(function (value) {
             return !!value;
           }).flat();
         };
-
         mappableData = mappableData.reduce(function (allData, rowData) {
-          return [].concat((0, _toConsumableArray2["default"])(allData), [recursiveFlatten(rowData)]).filter(function (value) {
+          return [].concat((0, _toConsumableArray2["default"])(allData), [_recursiveFlatten(rowData)]).filter(function (value) {
             return !!value;
           }).flat();
         }, []);
       }
-
       var data = mappableData.map(function (rowData) {
         return columns.map(function (columnDef, index) {
           if (index === 0 && typeof rowData.getGroupValue === "function") {
             return rowData.getGroupValue();
           }
-
           if (typeof columnDef.getExportValue === "function") {
             return columnDef.getExportValue(rowData);
           }
-
           return _this.props.getFieldValue(rowData, columnDef);
         });
       });
       return [columns, data];
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "defaultExportCsv", function () {
+    (0, _defineProperty2["default"])(_this, "defaultExportCsv", function () {
       var _this$getTableData = _this.getTableData({
-        isForExport: true
-      }),
-          _this$getTableData2 = (0, _slicedToArray2["default"])(_this$getTableData, 2),
-          columns = _this$getTableData2[0],
-          data = _this$getTableData2[1];
-
+          isForExport: true
+        }),
+        _this$getTableData2 = (0, _slicedToArray2["default"])(_this$getTableData, 2),
+        columns = _this$getTableData2[0],
+        data = _this$getTableData2[1];
       var fileName = _this.props.title || "data";
-
       if (_this.props.exportFileName) {
         fileName = typeof _this.props.exportFileName === "function" ? _this.props.exportFileName() : _this.props.exportFileName;
       }
-
       var builder = new _filefy.CsvBuilder(fileName + ".csv");
       builder.setDelimeter(_this.props.exportDelimiter).setColumns(columns.map(function (columnDef) {
         return columnDef.title;
       })).addRows(data).exportFile();
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "defaultExportPdf", function () {
+    (0, _defineProperty2["default"])(_this, "defaultExportPdf", function () {
       if (jsPDF !== null) {
         var _this$getTableData3 = _this.getTableData({
-          isForExport: true
-        }),
-            _this$getTableData4 = (0, _slicedToArray2["default"])(_this$getTableData3, 2),
-            columns = _this$getTableData4[0],
-            data = _this$getTableData4[1];
-
+            isForExport: true
+          }),
+          _this$getTableData4 = (0, _slicedToArray2["default"])(_this$getTableData3, 2),
+          columns = _this$getTableData4[0],
+          data = _this$getTableData4[1];
         var content = {
           startY: 50,
           head: [columns.map(function (columnDef) {
@@ -181,24 +132,22 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
         doc.save((_this.props.exportFileName || _this.props.title || "data") + ".pdf");
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "exportCsv", function () {
+    (0, _defineProperty2["default"])(_this, "exportCsv", function () {
       if (_this.props.exportCsv) {
         _this.props.exportCsv(_this.props.columns, _this.props.data);
       } else {
         _this.defaultExportCsv();
       }
-
       _this.setState({
         exportButtonAnchorEl: null
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "exportPdf", function () {
+    (0, _defineProperty2["default"])(_this, "exportPdf", function () {
       if (_this.props.exportPdf) {
         _this.props.exportPdf(_this.props.columns, _this.props.data);
       } else {
         _this.defaultExportPdf();
       }
-
       _this.setState({
         exportButtonAnchorEl: null
       });
@@ -210,14 +159,12 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
     };
     return _this;
   }
-
-  (0, _createClass2["default"])(MTableToolbar, [{
+  (0, _inherits2["default"])(MTableToolbar, _React$Component);
+  return (0, _createClass2["default"])(MTableToolbar, [{
     key: "renderSearch",
     value: function renderSearch() {
       var _this2 = this;
-
       var localization = (0, _objectSpread2["default"])({}, MTableToolbar.defaultProps.localization, this.props.localization);
-
       if (this.props.search) {
         return /*#__PURE__*/React.createElement(_TextField["default"], {
           autoFocus: this.props.searchAutoFocus,
@@ -262,7 +209,6 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
     key: "renderDefaultActions",
     value: function renderDefaultActions() {
       var _this3 = this;
-
       var localization = (0, _objectSpread2["default"])({}, MTableToolbar.defaultProps.localization, this.props.localization);
       var classes = this.props.classes;
       return /*#__PURE__*/React.createElement("div", null, this.props.columnsButton && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_Tooltip["default"], {
@@ -308,7 +254,6 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
             }
           }), /*#__PURE__*/React.createElement("span", null, col.title)));
         }
-
         return null;
       }))), this.props.exportButton && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_Tooltip["default"], {
         title: localization.exportTitle
@@ -389,10 +334,7 @@ var MTableToolbar = /*#__PURE__*/function (_React$Component) {
       }), this.props.searchFieldAlignment === "right" && this.renderSearch(), this.props.toolbarButtonAlignment === "right" && this.renderActions());
     }
   }]);
-  return MTableToolbar;
 }(React.Component);
-
-exports.MTableToolbar = MTableToolbar;
 MTableToolbar.defaultProps = {
   actions: [],
   columns: [],
@@ -458,8 +400,7 @@ MTableToolbar.propTypes = {
   classes: _propTypes["default"].object,
   searchAutoFocus: _propTypes["default"].bool
 };
-
-var styles = function styles(theme) {
+var styles = exports.styles = function styles(theme) {
   return {
     root: {
       paddingRight: theme.spacing(1)
@@ -490,9 +431,4 @@ var styles = function styles(theme) {
     }
   };
 };
-
-exports.styles = styles;
-
-var _default = (0, _withStyles["default"])(styles)(MTableToolbar);
-
-exports["default"] = _default;
+var _default = exports["default"] = (0, _withStyles["default"])(styles)(MTableToolbar);
