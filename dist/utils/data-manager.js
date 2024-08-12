@@ -578,20 +578,8 @@ var DataManager = exports["default"] = /*#__PURE__*/function () {
         return c.tableData.id === id + 1;
       });
       if (!nextColumn) return;
-
-      // console.log("S i: " + column.tableData.initialWidth);
-      // console.log("S a: " + column.tableData.additionalWidth);
-      // console.log("S w: " + column.tableData.width);
-
       column.tableData.additionalWidth = additionalWidth;
       column.tableData.width = "calc(".concat(column.tableData.initialWidth, " + ").concat(column.tableData.additionalWidth, "px)");
-
-      // nextColumn.tableData.additionalWidth = -1 * additionalWidth;
-      // nextColumn.tableData.width = `calc(${nextColumn.tableData.initialWidth} + ${nextColumn.tableData.additionalWidth}px)`;
-
-      // console.log("F i: " + column.tableData.initialWidth);
-      // console.log("F a: " + column.tableData.additionalWidth);
-      // console.log("F w: " + column.tableData.width);
     }
   }, {
     key: "findGroupByGroupPath",
@@ -691,8 +679,6 @@ var DataManager = exports["default"] = /*#__PURE__*/function () {
             value = colDef.getGroupValue(value);
           }
           var group;
-          console.log(o.groupsIndex);
-          console.log(value);
           if (o.groupsIndex[value] !== undefined) {
             group = o.groups[o.groupsIndex[value]];
           }
