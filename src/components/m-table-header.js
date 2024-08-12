@@ -99,7 +99,7 @@ export class MTableHeader extends React.Component {
     const mapArr = this.props.columns
       .filter(
         (columnDef) =>
-            !columnDef.hidden && !((columnDef.tableData.groupOrder > -1 && !this.props.options.showGroupedColumnsWhileGrouped))
+            !columnDef.hidden && (this.props.options.showGroupedColumnsWhileGrouped || columnDef.tableData.groupOrder === -1)
       )
       .sort((a, b) => a.tableData.columnOrder - b.tableData.columnOrder)
       .map((columnDef, index) => {
@@ -280,11 +280,6 @@ export class MTableHeader extends React.Component {
   }
 
   render() {
-    // const log = this.props.columns.map(c => c.field + ": " + c.tableData.width + ", " + c.tableData.initialWidth + ", " + c.tableData.additionalWidth).join('\r\n');
-    // console.log("===============================");
-    // console.log(log);
-    // console.log("===============================");
-
     const headers = this.renderHeader();
     if (this.props.hasSelection) {
       headers.splice(0, 0, this.renderSelectionHeader());

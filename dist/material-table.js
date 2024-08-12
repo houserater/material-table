@@ -1,108 +1,70 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
+var _typeof3 = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var _Table = _interopRequireDefault(require("@material-ui/core/Table"));
-
 var _TableFooter = _interopRequireDefault(require("@material-ui/core/TableFooter"));
-
 var _TableRow = _interopRequireDefault(require("@material-ui/core/TableRow"));
-
 var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
-
 var _reactDoubleScrollbar = _interopRequireDefault(require("react-double-scrollbar"));
-
 var React = _interopRequireWildcard(require("react"));
-
 var _components = require("./components");
-
 var _reactBeautifulDnd = require("react-beautiful-dnd");
-
 var _dataManager = _interopRequireDefault(require("./utils/data-manager"));
-
 var _debounce = require("debounce");
-
 var _fastDeepEqual = _interopRequireDefault(require("fast-deep-equal"));
-
 var _core = require("@material-ui/core");
-
 var CommonValues = _interopRequireWildcard(require("./utils/common-values"));
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof3(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /* eslint-disable no-unused-vars */
 /* eslint-enable no-unused-vars */
-var MaterialTable = /*#__PURE__*/function (_React$Component) {
-  (0, _inherits2["default"])(MaterialTable, _React$Component);
-
-  var _super = _createSuper(MaterialTable);
-
+var MaterialTable = exports["default"] = /*#__PURE__*/function (_React$Component) {
   function MaterialTable(_props) {
     var _this;
-
     (0, _classCallCheck2["default"])(this, MaterialTable);
-    _this = _super.call(this, _props);
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "dataManager", new _dataManager["default"]());
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "isRemoteData", function (props) {
+    _this = _callSuper(this, MaterialTable, [_props]);
+    (0, _defineProperty2["default"])(_this, "dataManager", new _dataManager["default"]());
+    (0, _defineProperty2["default"])(_this, "isRemoteData", function (props) {
       return !Array.isArray((props || _this.props).data);
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "isOutsidePageNumbers", function (props) {
+    (0, _defineProperty2["default"])(_this, "isOutsidePageNumbers", function (props) {
       return props.page !== undefined && props.totalCount !== undefined;
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onAllSelected", function (checked) {
+    (0, _defineProperty2["default"])(_this, "onAllSelected", function (checked) {
       _this.dataManager.changeAllSelected(checked);
-
       _this.setState(_this.dataManager.getRenderState(), function () {
         return _this.onSelectionChange();
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onChangeColumnHidden", function (column, hidden) {
+    (0, _defineProperty2["default"])(_this, "onChangeColumnHidden", function (column, hidden) {
       _this.dataManager.changeColumnHidden(column, hidden);
-
       _this.setState(_this.dataManager.getRenderState(), function () {
         _this.props.onChangeColumnHidden && _this.props.onChangeColumnHidden(column, hidden);
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onChangeGroupOrder", function (groupedColumn) {
+    (0, _defineProperty2["default"])(_this, "onChangeGroupOrder", function (groupedColumn) {
       _this.dataManager.changeGroupOrder(groupedColumn.tableData.id);
-
       _this.setState(_this.dataManager.getRenderState());
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onChangeOrder", function (orderBy, orderDirection) {
+    (0, _defineProperty2["default"])(_this, "onChangeOrder", function (orderBy, orderDirection) {
       var newOrderBy = orderDirection === "" ? -1 : orderBy;
-
       _this.dataManager.changeOrder(newOrderBy, orderDirection);
-
       if (_this.isRemoteData()) {
         var query = (0, _objectSpread2["default"])({}, _this.state.query);
         query.page = 0;
@@ -110,7 +72,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
           return a.tableData.id === newOrderBy;
         });
         query.orderDirection = orderDirection;
-
         _this.onQueryChange(query, function () {
           _this.props.onOrderChange && _this.props.onOrderChange(newOrderBy, orderDirection);
         });
@@ -120,11 +81,10 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         });
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onChangePage", function (event, page) {
+    (0, _defineProperty2["default"])(_this, "onChangePage", function (event, page) {
       if (_this.isRemoteData()) {
         var query = (0, _objectSpread2["default"])({}, _this.state.query);
         query.page = page;
-
         _this.onQueryChange(query, function () {
           _this.props.onChangePage && _this.props.onChangePage(page, query.pageSize);
         });
@@ -132,52 +92,45 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         if (!_this.isOutsidePageNumbers(_this.props)) {
           _this.dataManager.changeCurrentPage(page);
         }
-
         _this.setState(_this.dataManager.getRenderState(), function () {
           _this.props.onChangePage && _this.props.onChangePage(page, _this.state.pageSize);
         });
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onChangeRowsPerPage", function (event) {
+    (0, _defineProperty2["default"])(_this, "onChangeRowsPerPage", function (event) {
       var pageSize = event.target.value;
-
       _this.dataManager.changePageSize(pageSize);
-
       _this.props.onChangePage && _this.props.onChangePage(0, pageSize);
-
       if (_this.isRemoteData()) {
         var query = (0, _objectSpread2["default"])({}, _this.state.query);
         query.pageSize = event.target.value;
         query.page = 0;
-
         _this.onQueryChange(query, function () {
           _this.props.onChangeRowsPerPage && _this.props.onChangeRowsPerPage(pageSize);
         });
       } else {
         _this.dataManager.changeCurrentPage(0);
-
         _this.setState(_this.dataManager.getRenderState(), function () {
           _this.props.onChangeRowsPerPage && _this.props.onChangeRowsPerPage(pageSize);
         });
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onDragEnd", function (result) {
+    (0, _defineProperty2["default"])(_this, "onDragEnd", function (result) {
       if (!result || !result.source || !result.destination) return;
-
       _this.dataManager.changeByDrag(result);
-
-      _this.setState(_this.dataManager.getRenderState(), function () {
+      _this.setState((0, _objectSpread2["default"])({}, _this.dataManager.getRenderState(), {
+        renderCount: (_this.state.renderCount || 0) + 1
+      }), function () {
         if (_this.props.onColumnDragged && result.destination.droppableId === "headers" && result.source.droppableId === "headers") {
           _this.props.onColumnDragged(result.source.index, result.destination.index);
         }
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onGroupExpandChanged", function (path) {
+    (0, _defineProperty2["default"])(_this, "onGroupExpandChanged", function (path) {
       _this.dataManager.changeGroupExpand(path);
-
       _this.setState(_this.dataManager.getRenderState());
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onGroupRemoved", function (groupedColumn, index) {
+    (0, _defineProperty2["default"])(_this, "onGroupRemoved", function (groupedColumn, index) {
       var result = {
         combine: null,
         destination: {
@@ -193,14 +146,12 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         },
         type: "DEFAULT"
       };
-
       _this.dataManager.changeByDrag(result);
-
       _this.setState(_this.dataManager.getRenderState(), function () {
         _this.props.onGroupRemoved && _this.props.onGroupRemoved(groupedColumn, index);
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onEditingApproved", function (mode, newData, oldData) {
+    (0, _defineProperty2["default"])(_this, "onEditingApproved", function (mode, newData, oldData) {
       if (mode === "add" && _this.props.editable && _this.props.editable.onRowAdd) {
         _this.setState({
           isLoading: true
@@ -219,7 +170,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               message: reason,
               errorCause: "add"
             };
-
             _this.setState({
               isLoading: false,
               errorState: errorState
@@ -232,7 +182,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         }, function () {
           _this.props.editable.onRowUpdate(newData, oldData).then(function (result) {
             _this.dataManager.changeRowEditing(oldData);
-
             _this.setState((0, _objectSpread2["default"])({
               isLoading: false
             }, _this.dataManager.getRenderState()), function () {
@@ -245,7 +194,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               message: reason,
               errorCause: "update"
             };
-
             _this.setState({
               isLoading: false,
               errorState: errorState
@@ -258,7 +206,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         }, function () {
           _this.props.editable.onRowDelete(oldData).then(function (result) {
             _this.dataManager.changeRowEditing(oldData);
-
             _this.setState((0, _objectSpread2["default"])({
               isLoading: false
             }, _this.dataManager.getRenderState()), function () {
@@ -271,7 +218,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               message: reason,
               errorCause: "delete"
             };
-
             _this.setState({
               isLoading: false,
               errorState: errorState
@@ -284,9 +230,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         }, function () {
           _this.props.editable.onBulkUpdate(_this.dataManager.bulkEditChangedRows).then(function (result) {
             _this.dataManager.changeBulkEditOpen(false);
-
             _this.dataManager.clearBulkEditChangedRows();
-
             _this.setState((0, _objectSpread2["default"])({
               isLoading: false
             }, _this.dataManager.getRenderState()), function () {
@@ -299,7 +243,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               message: reason,
               errorCause: "bulk edit"
             };
-
             _this.setState({
               isLoading: false,
               errorState: errorState
@@ -308,33 +251,28 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         });
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onEditingCanceled", function (mode, rowData) {
+    (0, _defineProperty2["default"])(_this, "onEditingCanceled", function (mode, rowData) {
       if (mode === "add") {
         _this.props.editable.onRowAddCancelled && _this.props.editable.onRowAddCancelled();
-
         _this.setState({
           showAddRow: false
         });
       } else if (mode === "update") {
         _this.props.editable.onRowUpdateCancelled && _this.props.editable.onRowUpdateCancelled();
-
         _this.dataManager.changeRowEditing(rowData);
-
         _this.setState(_this.dataManager.getRenderState());
       } else if (mode === "delete") {
         _this.dataManager.changeRowEditing(rowData);
-
         _this.setState(_this.dataManager.getRenderState());
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "retry", function () {
+    (0, _defineProperty2["default"])(_this, "retry", function () {
       _this.onQueryChange(_this.state.query);
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onQueryChange", function (query, callback) {
+    (0, _defineProperty2["default"])(_this, "onQueryChange", function (query, callback) {
       query = (0, _objectSpread2["default"])({}, _this.state.query, query, {
         error: _this.state.errorState
       });
-
       _this.setState({
         isLoading: true,
         errorState: undefined
@@ -342,9 +280,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         _this.props.data(query).then(function (result) {
           query.totalCount = result.totalCount;
           query.page = result.page;
-
           _this.dataManager.setData(result.data);
-
           _this.setState((0, _objectSpread2["default"])({
             isLoading: false,
             errorState: false
@@ -359,7 +295,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             message: (0, _typeof2["default"])(error) === "object" ? error.message : error !== undefined ? error : localization.error,
             errorCause: "query"
           };
-
           _this.setState((0, _objectSpread2["default"])({
             isLoading: false,
             errorState: errorState
@@ -367,17 +302,15 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         });
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onRowSelected", function (event, path, dataClicked) {
+    (0, _defineProperty2["default"])(_this, "onRowSelected", function (event, path, dataClicked) {
       _this.dataManager.changeRowSelected(event.target.checked, path);
-
       _this.setState(_this.dataManager.getRenderState(), function () {
         return _this.onSelectionChange(dataClicked);
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onSelectionChange", function (dataClicked) {
+    (0, _defineProperty2["default"])(_this, "onSelectionChange", function (dataClicked) {
       if (_this.props.onSelectionChange) {
         var selectedRows = [];
-
         var findSelecteds = function findSelecteds(list) {
           list.forEach(function (row) {
             if (row.tableData.checked) {
@@ -385,18 +318,15 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             }
           });
         };
-
         findSelecteds(_this.state.originalData);
-
         _this.props.onSelectionChange(selectedRows, dataClicked);
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onSearchChangeDebounce", (0, _debounce.debounce)(function (searchText) {
+    (0, _defineProperty2["default"])(_this, "onSearchChangeDebounce", (0, _debounce.debounce)(function (searchText) {
       if (_this.isRemoteData()) {
         var query = (0, _objectSpread2["default"])({}, _this.state.query);
         query.page = 0;
         query.search = searchText;
-
         _this.onQueryChange(query);
       } else {
         _this.setState(_this.dataManager.getRenderState(), function () {
@@ -404,12 +334,11 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         });
       }
     }, _this.props.options.debounceInterval));
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onFilterChange", function (columnId, value) {
+    (0, _defineProperty2["default"])(_this, "onFilterChange", function (columnId, value) {
       _this.dataManager.changeFilterValue(columnId, value);
-
       _this.setState({}, _this.onFilterChangeDebounce);
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onFilterChangeDebounce", (0, _debounce.debounce)(function () {
+    (0, _defineProperty2["default"])(_this, "onFilterChangeDebounce", (0, _debounce.debounce)(function () {
       if (_this.isRemoteData()) {
         var query = (0, _objectSpread2["default"])({}, _this.state.query);
         query.page = 0;
@@ -422,7 +351,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             value: a.tableData.filterValue
           };
         });
-
         _this.onQueryChange(query);
       } else {
         _this.setState(_this.dataManager.getRenderState(), function () {
@@ -436,45 +364,38 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
                 value: a.tableData.filterValue
               };
             });
-
             _this.props.onFilterChange(appliedFilters);
           }
         });
       }
     }, _this.props.options.debounceInterval));
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onTreeExpandChanged", function (path, data) {
+    (0, _defineProperty2["default"])(_this, "onTreeExpandChanged", function (path, data) {
       _this.dataManager.changeTreeExpand(path);
-
       _this.setState(_this.dataManager.getRenderState(), function () {
         _this.props.onTreeExpandChange && _this.props.onTreeExpandChange(data, data.tableData.isTreeExpanded);
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onToggleDetailPanel", function (path, render) {
+    (0, _defineProperty2["default"])(_this, "onToggleDetailPanel", function (path, render) {
       _this.dataManager.changeDetailPanelVisibility(path, render);
-
       _this.setState(_this.dataManager.getRenderState());
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onCellEditStarted", function (rowData, columnDef) {
+    (0, _defineProperty2["default"])(_this, "onCellEditStarted", function (rowData, columnDef) {
       _this.dataManager.startCellEditable(rowData, columnDef);
-
       _this.setState(_this.dataManager.getRenderState());
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onCellEditFinished", function (rowData, columnDef) {
+    (0, _defineProperty2["default"])(_this, "onCellEditFinished", function (rowData, columnDef) {
       _this.dataManager.finishCellEditable(rowData, columnDef);
-
       _this.setState(_this.dataManager.getRenderState());
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onEditRowDataChanged", function (rowData, newData) {
+    (0, _defineProperty2["default"])(_this, "onEditRowDataChanged", function (rowData, newData) {
       _this.dataManager.setEditRowData(rowData, newData);
-
       _this.setState(_this.dataManager.getRenderState());
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onColumnResized", function (id, additionalWidth) {
+    (0, _defineProperty2["default"])(_this, "onColumnResized", function (id, additionalWidth) {
       _this.dataManager.onColumnResized(id, additionalWidth);
-
       _this.setState(_this.dataManager.getRenderState());
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderTable", function (props) {
+    (0, _defineProperty2["default"])(_this, "renderTable", function (props) {
       return /*#__PURE__*/React.createElement(_Table["default"], {
         style: {
           tableLayout: props.options.fixedColumns && (props.options.fixedColumns.left || props.options.fixedColumns.right) ? "fixed" : props.options.tableLayout
@@ -545,27 +466,24 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         scrollWidth: _this.state.width
       }));
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getColumnsWidth", function (props, count) {
+    (0, _defineProperty2["default"])(_this, "getColumnsWidth", function (props, count) {
       var result = [];
       var actionsWidth = CommonValues.actionsColumnWidth(props);
-
       if (actionsWidth > 0) {
         if (count > 0 && props.options.actionsColumnIndex >= 0 && props.options.actionsColumnIndex < count) {
           result.push(actionsWidth + "px");
         } else if (count < 0 && props.options.actionsColumnIndex < 0 && props.options.actionsColumnIndex >= count) {
           result.push(actionsWidth + "px");
         }
-      } // add selection action width only for left container div
+      }
 
-
+      // add selection action width only for left container div
       if (props.options.selection && count > 0) {
         var selectionWidth = CommonValues.selectionMaxWidth(props, _this.state.treeDataMaxLevel);
         result.push(selectionWidth + "px");
       }
-
       for (var i = 0; i < Math.abs(count) && i < props.columns.length; i++) {
         var colDef = props.columns[count >= 0 ? i : props.columns.length - 1 - i];
-
         if (colDef.tableData) {
           if (typeof colDef.tableData.width === "number") {
             result.push(colDef.tableData.width + "px");
@@ -574,16 +492,11 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
           }
         }
       }
-
       return "calc(" + result.join(" + ") + ")";
     });
-
     var calculatedProps = _this.getProps(_props);
-
     _this.setDataManagerFields(calculatedProps, true);
-
     var renderState = _this.dataManager.getRenderState();
-
     _this.state = (0, _objectSpread2["default"])({
       data: [],
       errorState: undefined
@@ -605,7 +518,8 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         page: 0,
         pageSize: calculatedProps.options.pageSize,
         search: renderState.searchText,
-        totalCount: 0
+        totalCount: 0,
+        renderCount: 0
       },
       showAddRow: false,
       bulkEditOpen: false,
@@ -614,12 +528,11 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     _this.tableContainerDiv = React.createRef();
     return _this;
   }
-
-  (0, _createClass2["default"])(MaterialTable, [{
+  (0, _inherits2["default"])(MaterialTable, _React$Component);
+  return (0, _createClass2["default"])(MaterialTable, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
-
       this.setState((0, _objectSpread2["default"])({}, this.dataManager.getRenderState(), {
         width: this.tableContainerDiv.current.scrollWidth
       }), function () {
@@ -633,18 +546,15 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     value: function setDataManagerFields(props, isInit) {
       var defaultSortColumnIndex = -1;
       var defaultSortDirection = "";
-
       if (props && props.options.sorting !== false) {
         defaultSortColumnIndex = props.columns.findIndex(function (a) {
           return a.defaultSort && a.sorting !== false;
         });
         defaultSortDirection = defaultSortColumnIndex > -1 ? props.columns[defaultSortColumnIndex].defaultSort : "";
       }
-
       this.dataManager.setColumns(props.columns);
       this.dataManager.setDefaultExpanded(props.options.defaultExpanded);
       this.dataManager.changeRowEditing();
-
       if (this.isRemoteData(props)) {
         this.dataManager.changeApplySearch(false);
         this.dataManager.changeApplyFilters(false);
@@ -654,9 +564,9 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         this.dataManager.changeApplyFilters(true);
         this.dataManager.changeApplySort(true);
         this.dataManager.setData(props.data);
-      } // If the columns changed and the defaultSorting differs from the current sorting, it will trigger a new sorting
+      }
 
-
+      // If the columns changed and the defaultSorting differs from the current sorting, it will trigger a new sorting
       var shouldReorder = isInit || defaultSortColumnIndex !== this.dataManager.orderBy && !this.isRemoteData() && defaultSortDirection !== this.dataManager.orderDirection;
       shouldReorder && this.dataManager.changeOrder(defaultSortColumnIndex, defaultSortDirection);
       isInit && this.dataManager.changeSearchText(props.options.searchText || "");
@@ -679,25 +589,22 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       // const propsChanged = Object.entries(this.props).reduce((didChange, prop) => didChange || prop[1] !== prevProps[prop[0]], false);
+
       var fixedPrevColumns = this.cleanColumns(prevProps.columns);
       var fixedPropsColumns = this.cleanColumns(this.props.columns);
       var propsChanged = !(0, _fastDeepEqual["default"])(fixedPrevColumns, fixedPropsColumns);
       propsChanged = propsChanged || !(0, _fastDeepEqual["default"])(prevProps.options, this.props.options);
-
       if (!this.isRemoteData()) {
         propsChanged = propsChanged || !(0, _fastDeepEqual["default"])(prevProps.data, this.props.data);
       }
-
       if (propsChanged) {
         var props = this.getProps(this.props);
         this.setDataManagerFields(props);
         this.setState(this.dataManager.getRenderState());
       }
-
       var count = this.isRemoteData() ? this.state.query.totalCount : this.state.data.length;
       var currentPage = this.isRemoteData() ? this.state.query.page : this.state.currentPage;
       var pageSize = this.isRemoteData() ? this.state.query.pageSize : this.state.pageSize;
-
       if (count <= pageSize * currentPage && currentPage !== 0) {
         this.onChangePage(null, Math.max(0, Math.ceil(count / pageSize) - 1));
       }
@@ -706,7 +613,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     key: "getProps",
     value: function getProps(props) {
       var _this3 = this;
-
       var calculatedProps = (0, _objectSpread2["default"])({}, props || this.props);
       calculatedProps.components = (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.components, calculatedProps.components);
       calculatedProps.icons = (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.icons, calculatedProps.icons);
@@ -750,7 +656,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
           });
         } else return action;
       });
-
       if (calculatedProps.editable) {
         if (calculatedProps.editable.onRowAdd) {
           calculatedProps.actions.push({
@@ -760,14 +665,12 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             disabled: !!this.dataManager.lastEditingRow,
             onClick: function onClick() {
               _this3.dataManager.changeRowEditing();
-
               _this3.setState((0, _objectSpread2["default"])({}, _this3.dataManager.getRenderState(), {
                 showAddRow: !_this3.state.showAddRow
               }));
             }
           });
         }
-
         if (calculatedProps.editable.onRowUpdate) {
           calculatedProps.actions.push(function (rowData) {
             return {
@@ -777,7 +680,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               hidden: calculatedProps.editable.isEditHidden && calculatedProps.editable.isEditHidden(rowData),
               onClick: function onClick(e, rowData) {
                 _this3.dataManager.changeRowEditing(rowData, "update");
-
                 _this3.setState((0, _objectSpread2["default"])({}, _this3.dataManager.getRenderState(), {
                   showAddRow: false
                 }));
@@ -785,7 +687,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             };
           });
         }
-
         if (calculatedProps.editable.onRowDelete) {
           calculatedProps.actions.push(function (rowData) {
             return {
@@ -795,7 +696,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               hidden: calculatedProps.editable.isDeleteHidden && calculatedProps.editable.isDeleteHidden(rowData),
               onClick: function onClick(e, rowData) {
                 _this3.dataManager.changeRowEditing(rowData, "delete");
-
                 _this3.setState((0, _objectSpread2["default"])({}, _this3.dataManager.getRenderState(), {
                   showAddRow: false
                 }));
@@ -803,7 +703,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             };
           });
         }
-
         if (calculatedProps.editable.onBulkUpdate) {
           calculatedProps.actions.push({
             icon: calculatedProps.icons.Edit,
@@ -812,7 +711,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             hidden: this.dataManager.bulkEditOpen,
             onClick: function onClick() {
               _this3.dataManager.changeBulkEditOpen(true);
-
               _this3.setState(_this3.dataManager.getRenderState());
             }
           });
@@ -832,22 +730,18 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             hidden: !this.dataManager.bulkEditOpen,
             onClick: function onClick() {
               _this3.dataManager.changeBulkEditOpen(false);
-
               _this3.dataManager.clearBulkEditChangedRows();
-
               _this3.setState(_this3.dataManager.getRenderState());
             }
           });
         }
       }
-
       return calculatedProps;
     }
   }, {
     key: "renderFooter",
     value: function renderFooter() {
       var props = this.getProps();
-
       if (props.options.paging) {
         var localization = (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization.pagination, this.props.localization.pagination);
         var isOutsidePageNumbers = this.isOutsidePageNumbers(props);
@@ -907,7 +801,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this4 = this;
-
       var props = this.getProps();
       return /*#__PURE__*/React.createElement(_reactBeautifulDnd.DragDropContext, {
         onDragEnd: this.onDragEnd,
@@ -964,10 +857,10 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         "double": props.options.doubleHorizontalScroll
       }, /*#__PURE__*/React.createElement(_reactBeautifulDnd.Droppable, {
         droppableId: "headers",
-        direction: "horizontal"
+        direction: "horizontal",
+        key: this.state.renderCount
       }, function (provided, snapshot) {
         var table = _this4.renderTable(props);
-
         return /*#__PURE__*/React.createElement("div", {
           ref: provided.innerRef
         }, /*#__PURE__*/React.createElement("div", {
@@ -1050,11 +943,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
       }))));
     }
   }]);
-  return MaterialTable;
 }(React.Component);
-
-exports["default"] = MaterialTable;
-
 var style = function style() {
   return {
     horizontalScrollContainer: {
@@ -1072,12 +961,10 @@ var style = function style() {
     }
   };
 };
-
 var ScrollBar = (0, _core.withStyles)(style)(function (_ref) {
   var _double = _ref["double"],
-      children = _ref.children,
-      classes = _ref.classes;
-
+    children = _ref.children,
+    classes = _ref.classes;
   if (_double) {
     return /*#__PURE__*/React.createElement(_reactDoubleScrollbar["default"], null, children);
   } else {

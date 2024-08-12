@@ -1,70 +1,40 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
+var _typeof = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var React = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _TableCell = _interopRequireDefault(require("@material-ui/core/TableCell"));
-
 var _TableRow = _interopRequireDefault(require("@material-ui/core/TableRow"));
-
 var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
-
 var _FormControl = _interopRequireDefault(require("@material-ui/core/FormControl"));
-
 var _Select = _interopRequireDefault(require("@material-ui/core/Select"));
-
 var _Input = _interopRequireDefault(require("@material-ui/core/Input"));
-
 var _InputLabel = _interopRequireDefault(require("@material-ui/core/InputLabel"));
-
 var _MenuItem = _interopRequireDefault(require("@material-ui/core/MenuItem"));
-
 var _Checkbox = _interopRequireDefault(require("@material-ui/core/Checkbox"));
-
 var _ListItemText = _interopRequireDefault(require("@material-ui/core/ListItemText"));
-
 var _InputAdornment = _interopRequireDefault(require("@material-ui/core/InputAdornment"));
-
 var _Icon = _interopRequireDefault(require("@material-ui/core/Icon"));
-
 var _Tooltip = _interopRequireDefault(require("@material-ui/core/Tooltip"));
-
 var _dateFns = _interopRequireDefault(require("@date-io/date-fns"));
-
 var _pickers = require("@material-ui/pickers");
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /* eslint-disable no-unused-vars */
 var ITEM_HEIGHT = 48;
 var ITEM_PADDING_TOP = 8;
 var MenuProps = {
@@ -75,36 +45,26 @@ var MenuProps = {
     }
   }
 };
-
 var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
-  (0, _inherits2["default"])(MTableFilterRow, _React$Component);
-
-  var _super = _createSuper(MTableFilterRow);
-
   function MTableFilterRow() {
     var _this;
-
     (0, _classCallCheck2["default"])(this, MTableFilterRow);
-
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getLocalizationData", function () {
+    _this = _callSuper(this, MTableFilterRow, [].concat(args));
+    (0, _defineProperty2["default"])(_this, "getLocalizationData", function () {
       return (0, _objectSpread2["default"])({}, MTableFilterRow.defaultProps.localization, _this.props.localization);
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getLocalizedFilterPlaceHolder", function (columnDef) {
+    (0, _defineProperty2["default"])(_this, "getLocalizedFilterPlaceHolder", function (columnDef) {
       return columnDef.filterPlaceholder || _this.getLocalizationData().filterPlaceHolder || "";
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "LookupFilter", function (_ref) {
+    (0, _defineProperty2["default"])(_this, "LookupFilter", function (_ref) {
       var columnDef = _ref.columnDef;
-
       var _React$useState = React.useState(columnDef.tableData.filterValue || []),
-          _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-          selectedFilter = _React$useState2[0],
-          setSelectedFilter = _React$useState2[1];
-
+        _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
+        selectedFilter = _React$useState2[0],
+        setSelectedFilter = _React$useState2[1];
       React.useEffect(function () {
         setSelectedFilter(columnDef.tableData.filterValue || []);
       }, [columnDef.tableData.filterValue]);
@@ -150,32 +110,29 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
         }));
       })));
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderFilterComponent", function (columnDef) {
+    (0, _defineProperty2["default"])(_this, "renderFilterComponent", function (columnDef) {
       return React.createElement(columnDef.filterComponent, {
         columnDef: columnDef,
         onFilterChanged: _this.props.onFilterChanged
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderBooleanFilter", function (columnDef) {
+    (0, _defineProperty2["default"])(_this, "renderBooleanFilter", function (columnDef) {
       return /*#__PURE__*/React.createElement(_Checkbox["default"], {
         indeterminate: columnDef.tableData.filterValue === undefined,
         checked: columnDef.tableData.filterValue === "checked",
         onChange: function onChange() {
           var val;
-
           if (columnDef.tableData.filterValue === undefined) {
             val = "checked";
           } else if (columnDef.tableData.filterValue === "checked") {
             val = "unchecked";
           }
-
           _this.props.onFilterChanged(columnDef.tableData.id, val);
         }
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderDefaultFilter", function (columnDef) {
+    (0, _defineProperty2["default"])(_this, "renderDefaultFilter", function (columnDef) {
       var localization = _this.getLocalizationData();
-
       var FilterIcon = _this.props.icons.Filter;
       return /*#__PURE__*/React.createElement(_TextField["default"], {
         style: columnDef.type === "numeric" ? {
@@ -199,11 +156,10 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
         }
       });
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderDateTypeFilter", function (columnDef) {
+    (0, _defineProperty2["default"])(_this, "renderDateTypeFilter", function (columnDef) {
       var onDateInputChange = function onDateInputChange(date) {
         return _this.props.onFilterChanged(columnDef.tableData.id, date);
       };
-
       var pickerProps = {
         value: columnDef.tableData.filterValue || null,
         onChange: onDateInputChange,
@@ -211,7 +167,6 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
         clearable: true
       };
       var dateInputElement = null;
-
       if (columnDef.type === "date") {
         dateInputElement = /*#__PURE__*/React.createElement(_pickers.DatePicker, pickerProps);
       } else if (columnDef.type === "datetime") {
@@ -219,7 +174,6 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
       } else if (columnDef.type === "time") {
         dateInputElement = /*#__PURE__*/React.createElement(_pickers.TimePicker, pickerProps);
       }
-
       return /*#__PURE__*/React.createElement(_pickers.MuiPickersUtilsProvider, {
         utils: _dateFns["default"],
         locale: _this.props.localization.dateTimePickerLocalization
@@ -227,14 +181,13 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
     });
     return _this;
   }
-
-  (0, _createClass2["default"])(MTableFilterRow, [{
+  (0, _inherits2["default"])(MTableFilterRow, _React$Component);
+  return (0, _createClass2["default"])(MTableFilterRow, [{
     key: "getComponentForColumn",
     value: function getComponentForColumn(columnDef) {
       if (columnDef.filtering === false) {
         return null;
       }
-
       if (columnDef.field || columnDef.customFilterAndSearch) {
         if (columnDef.filterComponent) {
           return this.renderFilterComponent(columnDef);
@@ -255,9 +208,8 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this2 = this;
-
       var columns = this.props.columns.filter(function (columnDef) {
-        return !columnDef.hidden && !(columnDef.tableData.groupOrder > -1 && !_this2.props.options.showGroupedColumnsWhileGrouped);
+        return !columnDef.hidden && (_this2.props.options.showGroupedColumnsWhileGrouped || columnDef.tableData.groupOrder === -1);
       }).sort(function (a, b) {
         return a.tableData.columnOrder - b.tableData.columnOrder;
       }).map(function (columnDef) {
@@ -266,14 +218,12 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
           style: (0, _objectSpread2["default"])({}, _this2.props.filterCellStyle, columnDef.filterCellStyle)
         }, _this2.getComponentForColumn(columnDef));
       });
-
       if (this.props.selection) {
         columns.splice(0, 0, /*#__PURE__*/React.createElement(_TableCell["default"], {
           padding: "none",
           key: "key-selection-column"
         }));
       }
-
       if (this.props.hasActions) {
         if (this.props.actionsColumnIndex === -1) {
           columns.push( /*#__PURE__*/React.createElement(_TableCell["default"], {
@@ -281,17 +231,14 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
           }));
         } else {
           var endPos = 0;
-
           if (this.props.selection) {
             endPos = 1;
           }
-
           columns.splice(this.props.actionsColumnIndex + endPos, 0, /*#__PURE__*/React.createElement(_TableCell["default"], {
             key: "key-action-column"
           }));
         }
       }
-
       if (this.props.hasDetailPanel) {
         var alignment = this.props.detailPanelColumnAlignment;
         var index = alignment === "left" ? 0 : columns.length;
@@ -300,14 +247,12 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
           key: "key-detail-panel-column"
         }));
       }
-
       if (this.props.isTreeData > 0) {
         columns.splice(0, 0, /*#__PURE__*/React.createElement(_TableCell["default"], {
           padding: "none",
           key: "key-tree-data-filter"
         }));
       }
-
       this.props.columns.filter(function (columnDef) {
         return columnDef.tableData.groupOrder > -1;
       }).forEach(function (columnDef) {
@@ -323,9 +268,7 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
       }, columns);
     }
   }]);
-  return MTableFilterRow;
 }(React.Component);
-
 MTableFilterRow.defaultProps = {
   options: {},
   columns: [],
@@ -351,5 +294,4 @@ MTableFilterRow.propTypes = {
   localization: _propTypes["default"].object,
   hideFilterIcons: _propTypes["default"].bool
 };
-var _default = MTableFilterRow;
-exports["default"] = _default;
+var _default = exports["default"] = MTableFilterRow;

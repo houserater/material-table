@@ -46,6 +46,7 @@ export default class MaterialTable extends React.Component {
         search: renderState.searchText,
 
         totalCount: 0,
+        renderCount: 0,
       },
       showAddRow: false,
       bulkEditOpen: false,
@@ -408,7 +409,12 @@ export default class MaterialTable extends React.Component {
   onDragEnd = (result) => {
     if (!result || !result.source || !result.destination) return;
     this.dataManager.changeByDrag(result);
-    this.setState(this.dataManager.getRenderState(), () => {
+    this.setState(
+      {
+        ...this.dataManager.getRenderState(), 
+        renderCount: (this.state.renderCount || 0) + 1
+      },
+      () => {
       if (
         this.props.onColumnDragged &&
         result.destination.droppableId === "headers" &&
@@ -1031,7 +1037,7 @@ export default class MaterialTable extends React.Component {
             />
           )}
           <ScrollBar double={props.options.doubleHorizontalScroll}>
-            <Droppable droppableId="headers" direction="horizontal">
+            <Droppable droppableId="headers" direction="horizontal" key={this.state.renderCount}>
               {(provided, snapshot) => {
                 const table = this.renderTable(props);
                 return (

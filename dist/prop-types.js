@@ -1,24 +1,19 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.propTypes = void 0;
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var RefComponent = _propTypes["default"].shape({
   current: _propTypes["default"].element
 });
-
 var StyledComponent = _propTypes["default"].shape({
   classes: _propTypes["default"].object,
   innerRef: RefComponent
 });
-
-var propTypes = {
+var propTypes = exports.propTypes = {
   actions: _propTypes["default"].arrayOf(_propTypes["default"].oneOfType([_propTypes["default"].func, _propTypes["default"].shape({
     icon: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, _propTypes["default"].string, RefComponent]).isRequired,
     isFreeAction: _propTypes["default"].bool,
@@ -212,4 +207,3 @@ var propTypes = {
   page: _propTypes["default"].number,
   totalCount: _propTypes["default"].number
 };
-exports.propTypes = propTypes;

@@ -1,75 +1,49 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
+var _typeof = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var React = _interopRequireWildcard(require("react"));
-
 var _TableCell = _interopRequireDefault(require("@material-ui/core/TableCell"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _parseISO = _interopRequireDefault(require("date-fns/parseISO"));
-
 var CommonValues = _interopRequireWildcard(require("../utils/common-values"));
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
+var _excluded = ["icons", "columnDef", "rowData", "errorState", "cellEditable", "onCellEditStarted", "scrollWidth"];
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /* eslint-disable no-unused-vars */
 /* eslint-enable no-unused-vars */
 
 /* eslint-disable no-useless-escape */
 var isoDateRegex = /^\d{4}-(0[1-9]|1[0-2])-([12]\d|0[1-9]|3[01])([T\s](([01]\d|2[0-3])\:[0-5]\d|24\:00)(\:[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3])\:?([0-5]\d)?)?)?$/;
 /* eslint-enable no-useless-escape */
-
-var MTableCell = /*#__PURE__*/function (_React$Component) {
-  (0, _inherits2["default"])(MTableCell, _React$Component);
-
-  var _super = _createSuper(MTableCell);
-
+var MTableCell = exports["default"] = /*#__PURE__*/function (_React$Component) {
   function MTableCell() {
     var _this;
-
     (0, _classCallCheck2["default"])(this, MTableCell);
-
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "handleClickCell", function (e) {
+    _this = _callSuper(this, MTableCell, [].concat(args));
+    (0, _defineProperty2["default"])(_this, "handleClickCell", function (e) {
       if (_this.props.columnDef.disableClick) {
         e.stopPropagation();
       }
     });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getStyle", function () {
+    (0, _defineProperty2["default"])(_this, "getStyle", function () {
       var width = CommonValues.reducePercentsInCalc(_this.props.columnDef.tableData.width, _this.props.scrollWidth);
       var cellStyle = {
         color: "inherit",
@@ -81,31 +55,26 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
         fontFamily: "inherit",
         fontWeight: "inherit"
       };
-
       if (typeof _this.props.columnDef.cellStyle === "function") {
         cellStyle = (0, _objectSpread2["default"])({}, cellStyle, _this.props.columnDef.cellStyle(_this.props.value, _this.props.rowData));
       } else {
         cellStyle = (0, _objectSpread2["default"])({}, cellStyle, _this.props.columnDef.cellStyle);
       }
-
       if (_this.props.columnDef.disableClick) {
         cellStyle.cursor = "default";
       }
-
       return (0, _objectSpread2["default"])({}, _this.props.style, cellStyle);
     });
     return _this;
   }
-
-  (0, _createClass2["default"])(MTableCell, [{
+  (0, _inherits2["default"])(MTableCell, _React$Component);
+  return (0, _createClass2["default"])(MTableCell, [{
     key: "getRenderValue",
     value: function getRenderValue() {
       var dateLocale = this.props.columnDef.dateSetting && this.props.columnDef.dateSetting.locale ? this.props.columnDef.dateSetting.locale : undefined;
-
       if (this.props.columnDef.emptyValue !== undefined && (this.props.value === undefined || this.props.value === null)) {
         return this.getEmptyValue(this.props.columnDef.emptyValue);
       }
-
       if (this.props.columnDef.render) {
         if (this.props.rowData) {
           return this.props.columnDef.render(this.props.rowData, "row");
@@ -118,7 +87,6 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
           verticalAlign: "middle",
           width: 48
         };
-
         if (this.props.value) {
           return /*#__PURE__*/React.createElement(this.props.icons.Check, {
             style: style
@@ -158,7 +126,6 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
         // To avoid forwardref boolean children.
         return this.props.value.toString();
       }
-
       return this.props.value;
     }
   }, {
@@ -191,19 +158,17 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this2 = this;
-
       var _this$props = this.props,
-          icons = _this$props.icons,
-          columnDef = _this$props.columnDef,
-          rowData = _this$props.rowData,
-          errorState = _this$props.errorState,
-          cellEditable = _this$props.cellEditable,
-          onCellEditStarted = _this$props.onCellEditStarted,
-          scrollWidth = _this$props.scrollWidth,
-          cellProps = (0, _objectWithoutProperties2["default"])(_this$props, ["icons", "columnDef", "rowData", "errorState", "cellEditable", "onCellEditStarted", "scrollWidth"]);
+        icons = _this$props.icons,
+        columnDef = _this$props.columnDef,
+        rowData = _this$props.rowData,
+        errorState = _this$props.errorState,
+        cellEditable = _this$props.cellEditable,
+        onCellEditStarted = _this$props.onCellEditStarted,
+        scrollWidth = _this$props.scrollWidth,
+        cellProps = (0, _objectWithoutProperties2["default"])(_this$props, _excluded);
       var cellAlignment = columnDef.align !== undefined ? columnDef.align : ["numeric", "currency"].indexOf(this.props.columnDef.type) !== -1 ? "right" : "left";
       var renderValue = this.getRenderValue();
-
       if (cellEditable) {
         renderValue = /*#__PURE__*/React.createElement("div", {
           style: {
@@ -217,7 +182,6 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
           }
         }, renderValue);
       }
-
       return /*#__PURE__*/React.createElement(_TableCell["default"], (0, _extends2["default"])({
         size: this.props.size
       }, cellProps, {
@@ -227,10 +191,7 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
       }), this.props.children, renderValue);
     }
   }]);
-  return MTableCell;
 }(React.Component);
-
-exports["default"] = MTableCell;
 MTableCell.defaultProps = {
   columnDef: {},
   value: undefined
