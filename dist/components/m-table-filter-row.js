@@ -209,7 +209,7 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
       var columns = this.props.columns.filter(function (columnDef) {
-        return !columnDef.hidden && (_this2.props.options.showGroupedColumnsWhileGrouped || columnDef.tableData.groupOrder === -1);
+        return !columnDef.hidden && !(columnDef.tableData.groupOrder > -1 && !_this2.props.options.showGroupedColumnsWhileGrouped);
       }).sort(function (a, b) {
         return a.tableData.columnOrder - b.tableData.columnOrder;
       }).map(function (columnDef) {
